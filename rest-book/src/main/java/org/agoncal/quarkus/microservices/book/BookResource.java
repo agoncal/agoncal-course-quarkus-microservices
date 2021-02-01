@@ -18,6 +18,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.Instant;
 
+/**
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
+ */
 @Path("/api/books")
 @Tag(name = "Book REST Endpoint")
 public class BookResource {

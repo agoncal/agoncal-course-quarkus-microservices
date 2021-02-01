@@ -7,6 +7,11 @@ import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
 import java.time.Instant;
 
+/**
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
+ */
 @Schema(description = "Several ISBN formats")
 public class IsbnNumbers {
 

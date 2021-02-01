@@ -4,6 +4,11 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import java.time.Instant;
 
+/**
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
+ */
 @Schema(description = "A book")
 public class Book {
 

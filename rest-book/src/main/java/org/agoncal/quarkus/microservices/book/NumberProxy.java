@@ -7,6 +7,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
+ */
 @RegisterRestClient(configKey = "number.proxy")
 @Path("/api/numbers")
 public interface NumberProxy {

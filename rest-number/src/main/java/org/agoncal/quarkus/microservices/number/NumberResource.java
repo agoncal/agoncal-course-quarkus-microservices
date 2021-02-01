@@ -12,6 +12,11 @@ import javax.ws.rs.core.MediaType;
 import java.time.Instant;
 import java.util.Random;
 
+/**
+ * @author Antonio Goncalves
+ *         http://www.antoniogoncalves.org
+ *         --
+ */
 @Path("/api/numbers")
 @Tag(name = "Number REST Endpoint")
 public class NumberResource {
