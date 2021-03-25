@@ -24,7 +24,7 @@ public class IsbnNumbers {
   @JsonbTransient
   public Instant generationDate;
 
-  // toString()
+
   @Override
   public String toString() {
     return "IsbnNumbers{" +

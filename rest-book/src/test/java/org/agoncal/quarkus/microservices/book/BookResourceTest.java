@@ -5,8 +5,8 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.anything;
-import static org.hamcrest.Matchers.startsWith;import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.startsWith;
+import static org.hamcrest.core.Is.is;
 
 @QuarkusTest
 public class BookResourceTest {
@@ -22,11 +22,11 @@ public class BookResourceTest {
       .post("/api/books").
     then()
       .statusCode(200)
-      .body("isbn13", startsWith("13-"))
+      .body("isbn_13", startsWith("13-"))
       .body("title", is("Understanding Quarkus"))
       .body("author", is("Antonio Goncalves"))
-      .body("yearOfPublication", is(2020))
+      .body("year_of_publication", is(2020))
       .body("genre", is("IT"))
-      .body("creationDate", is(anything()));
+      .body("creation_date", startsWith("20"));
   }
 }

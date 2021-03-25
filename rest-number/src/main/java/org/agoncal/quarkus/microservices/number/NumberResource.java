@@ -28,7 +28,6 @@ public class NumberResource {
   @Produces(MediaType.APPLICATION_JSON)
   @Operation(summary = "Generates book numbers")
   public IsbnNumbers generateIsbnNumbers() {
-    // ...
     IsbnNumbers isbnNumbers = new IsbnNumbers();
     isbnNumbers.isbn13 = "13-" + new Random().nextInt(100_000_000);
     isbnNumbers.isbn10 = "10-" + new Random().nextInt(100_000);

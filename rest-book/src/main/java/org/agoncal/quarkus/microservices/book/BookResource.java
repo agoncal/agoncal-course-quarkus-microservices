@@ -40,7 +40,6 @@ public class BookResource {
   @Operation(summary = "Creates a new book")
   @Fallback(fallbackMethod = "fallbackOnCreatingABook")
   public Book createABook(@FormParam("title") String title, @FormParam("author") String author, @FormParam("year") int yearOfPublication, @FormParam("genre") String genre) {
-    // ...
     Book book = new Book();
     book.isbn13 = proxy.generateIsbnNumbers().isbn13;
     book.title = title;

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  rest-number:
+    image: "agoncal/rest-number:1.0.0-SNAPSHOT"
+    ports:
+      - "8701:8701"
+  rest-book:
+    image: "agoncal/rest-book:1.0.0-SNAPSHOT"
+    ports:
+      - "8702:8702"
+    environment:
+      - NUMBER_PROXY_MP_REST_URL=http://rest-number:8701
