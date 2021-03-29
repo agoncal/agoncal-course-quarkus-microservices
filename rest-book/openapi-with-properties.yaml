@@ -1,0 +1,62 @@
+---
+openapi: 3.0.3
+info:
+  title: Book API
+  description: Creates books
+  contact:
+    name: '@agoncal'
+    url: https://twitter.com/agoncal
+  version: "1.0"
+tags:
+- name: Book REST Endpoint
+paths:
+  /api/books:
+    post:
+      tags:
+      - Book REST Endpoint
+      summary: Creates a new book
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                year:
+                  format: int32
+                  type: integer
+                genre:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+components:
+  schemas:
+    Book:
+      description: A book
+      required:
+      - isbn_13
+      - title
+      type: object
+      properties:
+        author:
+          type: string
+        creation_date:
+          format: date
+          type: string
+        genre:
+          type: string
+        isbn_13:
+          type: string
+        title:
+          type: string
+        year_of_publication:
+          format: int32
+          type: integer
