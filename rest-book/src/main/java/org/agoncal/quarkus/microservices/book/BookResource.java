@@ -14,6 +14,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.Instant;
@@ -39,7 +40,7 @@ public class BookResource {
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Operation(summary = "Creates a new book")
   @Fallback(fallbackMethod = "fallbackOnCreatingABook")
-  public Book createABook(@FormParam("title") String title, @FormParam("author") String author, @FormParam("year") int yearOfPublication, @FormParam("genre") String genre) {
+  public Response createABook(@FormParam("title") String title, @FormParam("author") String author, @FormParam("year") int yearOfPublication, @FormParam("genre") String genre) {
     Book book = new Book();
     book.isbn13 = proxy.generateIsbnNumbers().isbn13;
     book.title = title;
@@ -48,10 +49,10 @@ public class BookResource {
     book.genre = genre;
     book.creationDate = Instant.now();
     logger.info("Book created: " + book);
-    return book;
+    return Response.status(201).entity(book).build();
   }
 
-  public Book fallbackOnCreatingABook(@FormParam("title") String title, @FormParam("author") String author, @FormParam("year") int yearOfPublication, @FormParam("genre") String genre) throws FileNotFoundException {
+  public Response fallbackOnCreatingABook(@FormParam("title") String title, @FormParam("author") String author, @FormParam("year") int yearOfPublication, @FormParam("genre") String genre) throws FileNotFoundException {
     Book book = new Book();
     book.isbn13 = "Will be set later";
     book.title = title;
@@ -61,7 +62,7 @@ public class BookResource {
     book.creationDate = Instant.now();
     saveBookOnDisk(book);
     logger.warn("Book saved on disk: " + book);
-    return book;
+    return Response.status(206).entity(book).build();
   }
 
   private void saveBookOnDisk(Book book) throws FileNotFoundException {
