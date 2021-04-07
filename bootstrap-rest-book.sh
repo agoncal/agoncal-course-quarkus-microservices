@@ -4,4 +4,4 @@ mvn -U io.quarkus:quarkus-maven-plugin:create \
         -DprojectArtifactId=rest-book \
         -DclassName="org.agoncal.quarkus.microservices.book.BookResource" \
         -Dpath="/api/books" \
-        -Dextensions="resteasy-jsonb"
+        -Dextensions="resteasy-jsonb, smallrye-openapi"
