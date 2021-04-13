@@ -1,6 +1,7 @@
 package org.agoncal.quarkus.microservices.book;
 
 import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -39,6 +40,7 @@ public class BookResource {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Operation(summary = "Creates a new book")
+  @Retry(maxRetries = 1, delay = 2000)
   @Fallback(fallbackMethod = "fallbackOnCreatingABook")
   public Response createABook(@FormParam("title") String title, @FormParam("author") String author, @FormParam("year") int yearOfPublication, @FormParam("genre") String genre) {
     Book book = new Book();
